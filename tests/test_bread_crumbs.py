@@ -1,7 +1,6 @@
 
 from selenium.webdriver.support import expected_conditions as EC
 
-import conftest
 from locators import Locators
 
 
