@@ -1,5 +1,7 @@
 import pytest
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -7,12 +9,11 @@ import constants
 from locators import Locators
 
 
-#@pytest.fixture
-#def driver():
+@pytest.fixture(scope="session")
+def driver():
     chrome_options = Options()
     chrome_options.add_argument("--start-fullscreen")
     browser = webdriver.Chrome(options=chrome_options)
-    browser = webdriver.Chrome()
     browser.get(constants.MAIN_URL)
     yield browser
     browser.quit()
@@ -27,7 +28,3 @@ def logged_user(driver):
     WebDriverWait(driver, 3).until(EC.element_to_be_clickable((Locators.PERSONAL_ACCOUNT)))
     driver.find_element(*Locators.PERSONAL_ACCOUNT).click()
     return driver
-
-
-def wait_for_element_located(driver, locator, time, condition):
-        return WebDriverWait(driver, time).until(condition(locator))
