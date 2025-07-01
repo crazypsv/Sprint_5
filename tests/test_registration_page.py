@@ -5,7 +5,6 @@ import constants
 from locators import Locators
 from helpers import Helpers
 
-
     def test_registration_new_user(self, driver):
         email = Helpers.fake_email()
         password = "123456"
