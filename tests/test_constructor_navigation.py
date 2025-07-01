@@ -1,7 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-import conftest
+
 from locators import Locators
 
 class TestStellarBurgers:
